@@ -51,6 +51,7 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="pages\list.jade" />
     <None Include="grunt.js" />
     <None Include="index.jade" />
     <None Include="pages\hello.jade" />
@@ -58,6 +59,7 @@
     <None Include="lib\**\*.*" />
     <None Include="package.json" />
     <None Include="WinningJS-todo_TemporaryKey.pfx" />
+    <Content Include="lib\components\List.js" />
     <Content Include="out\**\*.*" />
     <Content Include="images\**\*.*" />
   </ItemGroup>
@@ -65,11 +67,11 @@
     <SDKReference Include="Microsoft.WinJS, Version=0.6" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
-    <Target Name="BeforeBuild">
-      <!-- TODO get this to output nicely to the error list on failure, maybe without npm spew -->
-      <!-- TODO automate npm install? -->
-      <Exec Command="npm run-script before-build" />
-    </Target>
-    <Target Name="AfterBuild">
+  <Target Name="BeforeBuild">
+    <!-- TODO get this to output nicely to the error list on failure, maybe without npm spew -->
+    <!-- TODO automate npm install? -->
+    <Exec Command="npm run-script before-build" />
+  </Target>
+  <Target Name="AfterBuild">
   </Target>
 </Project>
