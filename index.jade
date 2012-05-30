@@ -1,0 +1,26 @@
+doctype 5
+html
+    head
+        meta(charset="utf-8")
+        title NOOK Study
+
+        //- WinJS references
+        link(href="//Microsoft.WinJS.0.6/css/ui-dark.css", rel="stylesheet")
+        script(src="//Microsoft.WinJS.0.6/js/base.js")
+        script(src="//Microsoft.WinJS.0.6/js/ui.js")
+
+        //- Automatically inserted scripts
+        each script in scripts
+            script(src=script)
+
+        //- Require the entry module (determined at compile time), plus the Jade runtime for templates to use.
+        script
+            require("#{entryModule}");
+            require("jade/runtime");
+
+        //- Automatically inserted styles
+        each style in styles
+            link(href="#{style}", rel="stylesheet")
+
+    body
+        p Hello, world, from index.jade! //- TODO for some reason this isn't showing up?

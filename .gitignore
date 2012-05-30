@@ -1,0 +1,9 @@
+/*.jsproj.user
+/*.suo
+/bin/
+/bld/
+
+/npm-debug.log
+/node_modules/
+
+/out/

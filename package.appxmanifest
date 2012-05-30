@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="9f73fe12-b921-4b47-b540-8ee32aa2baca" Version="1.0.0.0" Publisher="CN=NobleJS" />
+  <Properties>
+    <!-- TODO sync these up with package.json? -->
+    <DisplayName>WinningJS Todo</DisplayName>
+    <Description>Demo todo list application for Windows 8, built on the WinningJS framework</Description>
+    <PublisherDisplayName>NobleJS</PublisherDisplayName>
+    <Logo>images\store-logo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2</OSMinVersion>
+    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="out\index.html">
+      <!-- TODO seriously there's a lot of duplication going on here. Hide this XML shit. -->
+      <VisualElements DisplayName="WinningJS Todo" Logo="images\logo.png" SmallLogo="images\small-logo.png" Description="Demo todo list application for Windows 8, built on the WinningJS framework." ForegroundText="light" BackgroundColor="#000000">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="images\splash-screen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
