@@ -55,8 +55,14 @@
     <Content Include="lib\components\AddForm\index.js" />
     <Content Include="lib\components\App\template.jade" />
     <Content Include="lib\components\App\index.js" />
+    <Content Include="lib\components\BottomAppBar.js" />
+    <Content Include="lib\components\TopAppBar.js" />
+    <Content Include="pages\bottomAppBar.jade" />
     <Content Include="lib\components\List\index.js" />
     <Content Include="lib\components\List\template.jade" />
+    <Content Include="pages\list.jade" />
+    <Content Include="pages\addform.jade" />
+    <Content Include="pages\topAppBar.jade" />
     <None Include="grunt.js" />
     <None Include="index.jade" />
     <None Include="pages\hello.jade" />
