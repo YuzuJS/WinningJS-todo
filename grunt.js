@@ -103,7 +103,7 @@ module.exports = function (grunt) {
         buildIndex: {
             dest: "out/index.html",
             browserify: {
-                entry: "lib/start.js",
+                entry: "lib/start",
                 dest: "out/browserified",
                 aliases: {
                     "jquery": "jquery-browserify"
