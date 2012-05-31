@@ -18,7 +18,8 @@
     "dependencies": {
         "WinningJS": "git://github.com/NobleJS/WinningJS.git",
         "jade": ">= 0.26.1",
-        "jquery-browserify": ">= 1.7.2"
+        "jquery-browserify": ">= 1.7.2",
+        "pubit": "git://github.com/domenic/pubit.git"
     },
     "devDependencies": {
         "grunt": "*",
