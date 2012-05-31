@@ -51,22 +51,30 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="lib\components\AddForm.js" />
-    <Content Include="pages\list.jade" />
-    <Content Include="pages\addform.jade" />
+    <Content Include="lib\components\AddForm\template.jade" />
+    <Content Include="lib\components\AddForm\index.js" />
+    <Content Include="lib\components\App\template.jade" />
+    <Content Include="lib\components\App\index.js" />
+    <Content Include="lib\components\List\index.js" />
+    <Content Include="lib\components\List\template.jade" />
     <None Include="grunt.js" />
     <None Include="index.jade" />
     <None Include="pages\hello.jade" />
     <None Include="styles\**\*.*" />
-    <None Include="lib\**\*.*" />
+    <None Include="lib\components\AddForm.js" />
+    <None Include="lib\components\App.js" />
+    <None Include="lib\components\List.js" />
+    <None Include="lib\start.js" />
     <None Include="package.json" />
     <None Include="WinningJS-todo_TemporaryKey.pfx" />
-    <Content Include="lib\components\List.js" />
     <Content Include="out\**\*.*" />
     <Content Include="images\**\*.*" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS, Version=0.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="node_modules\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <Target Name="BeforeBuild">

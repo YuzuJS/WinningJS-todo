@@ -1,8 +1,6 @@
 body
-    margin: 300px
-
     @media screen and (-ms-view-state: fullscreen-landscape)
-        background: blue
+        background-image: -ms-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #00A3EF 100%);
 
     @media screen and (-ms-view-state: filled)
         background: purple
@@ -13,5 +11,17 @@ body
     @media screen and (-ms-view-state: fullscreen-portrait)
         background: green
 
-p
-    margin: 20px 0
+#todo-app
+    margin: auto;
+    margin-top: 200px;
+    padding: 30px
+    width: 600px
+    background: #000000
+    border: 1px #111 solid
+    border-radius: 20px
+    box-shadow: 0 8px 8px -3px #666
+    color: #FFFFFF
+
+#todo-app > * 
+    margin-bottom: 10px
+    font-size: 1.8em
