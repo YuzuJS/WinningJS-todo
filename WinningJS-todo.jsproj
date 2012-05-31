@@ -51,7 +51,9 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="lib\components\AddForm.js" />
     <Content Include="pages\list.jade" />
+    <Content Include="pages\addform.jade" />
     <None Include="grunt.js" />
     <None Include="index.jade" />
     <None Include="pages\hello.jade" />
