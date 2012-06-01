@@ -51,24 +51,11 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="lib\components\AddForm\template.jade" />
-    <Content Include="lib\components\AddForm\index.js" />
-    <Content Include="lib\components\App\template.jade" />
-    <Content Include="lib\components\App\index.js" />
-    <Content Include="lib\components\BottomAppBar\template.jade" />
-    <Content Include="lib\components\BottomAppBar\index.js" />
-    <Content Include="lib\components\ListView\index.js" />
-    <Content Include="lib\components\ListView\itemtemplate.jade" />
-    <Content Include="lib\components\ListView\template.jade" />
-    <Content Include="lib\components\List\index.js" />
-    <Content Include="lib\components\List\template.jade" />
-    <Content Include="lib\components\TopAppBar\template.jade" />
-    <Content Include="lib\components\TopAppBar\index.js" />
+
     <None Include="grunt.js" />
     <None Include="index.jade" />
-    <None Include="pages\hello.jade" />
     <None Include="styles\**\*.*" />
-    <None Include="lib\start.js" />
+    <None Include="lib\**\*.*" />
     <None Include="package.json" />
     <None Include="WinningJS-todo_TemporaryKey.pfx" />
     <Content Include="out\**\*.*" />
