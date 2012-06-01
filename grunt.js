@@ -3,9 +3,8 @@
 var path = require("path");
 var jade = require("jade");
 var stylus = require("stylus");
-var browserify = require("browserify");
-var fs = require("fs");
-var _ = require("underscore");
+
+var doBrowserify = require("./build/browserify");
 
 module.exports = function (grunt) {
     // TODO: factor out this grunt task into a separate project?
@@ -16,39 +15,6 @@ module.exports = function (grunt) {
 
     function urlize(path) {
         return "/" + path.replace(/\\/g, "/");
-    }
-
-    function browserifyJade(body, file) {
-        var templateFunction = jade.compile(body, { filename: file, compileDebug: false, client: true });
-        var jadeModuleTemplate = fs.readFileSync(path.resolve(__dirname, "build", "jadeModule.tmpl.js")).toString();
-        return _.template(jadeModuleTemplate, { templateFunctionSource: templateFunction.toString() });
-    }
-
-    function doBrowserify(entryFile, dest, aliases) {
-        var prelude = browserify().require(aliases).require(path.resolve("node_modules/jade/runtime.js")).bundle();
-        var preludeDest = path.join(dest, "browserify.js");
-        grunt.file.write(preludeDest, prelude);
-        grunt.log.writeln("File \"" + preludeDest + "\" created.");
-
-        var bundle = browserify();
-        Object.keys(aliases).forEach(function (alias) {
-            bundle.alias(alias, aliases[alias]);
-        });
-        bundle.register(".jade", browserifyJade);
-        bundle.require(path.resolve(entryFile), { basedir: __dirname, root: __dirname, target: entryFile });
-
-        var newFileUrls = [urlize(preludeDest)];
-        Object.keys(bundle.files).forEach(function (fileName) {
-            var newFilePath = path.join(dest, path.relative(__dirname, fileName));
-            var newFileContents = bundle.files[fileName].body;
-
-            grunt.file.write(newFilePath, newFileContents);
-            grunt.log.writeln("File \"" + newFilePath + "\" created.");
-
-            newFileUrls.push(urlize(newFilePath));
-        });
-
-        return newFileUrls;
     }
 
     function buildStylus(source, dest) {
@@ -83,7 +49,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask("buildIndex", "Browserify modules, compile Stylus, and build an index.html.", function () {
         var browserifyConfig = grunt.config("buildIndex.browserify");
-        var scripts = doBrowserify(browserifyConfig.entry, browserifyConfig.dest, browserifyConfig.aliases || {});
+        var scripts = doBrowserify(grunt, __dirname, browserifyConfig);
 
         var stylusConfig = grunt.config("buildIndex.stylus");
         var styles = buildStylus(stylusConfig.src, stylusConfig.dest);
