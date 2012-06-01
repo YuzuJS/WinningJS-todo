@@ -22,6 +22,7 @@
         "pubit": ">= 1.1.0"
     },
     "devDependencies": {
+        "npm": "*",
         "grunt": "*",
         "browserify": "git://github.com/domenic/node-browserify.git",
         "stylus": "*",
