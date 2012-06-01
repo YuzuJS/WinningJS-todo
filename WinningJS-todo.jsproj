@@ -61,9 +61,6 @@
     <None Include="index.jade" />
     <None Include="pages\hello.jade" />
     <None Include="styles\**\*.*" />
-    <None Include="lib\components\AddForm.js" />
-    <None Include="lib\components\App.js" />
-    <None Include="lib\components\List.js" />
     <None Include="lib\start.js" />
     <None Include="package.json" />
     <None Include="WinningJS-todo_TemporaryKey.pfx" />
