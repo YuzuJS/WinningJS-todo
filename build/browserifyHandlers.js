@@ -1,4 +1,6 @@
-﻿var fs = require("fs");
+﻿"use strict";
+
+var fs = require("fs");
 var path = require("path");
 var jade = require("jade");
 var _ = require("underscore");
