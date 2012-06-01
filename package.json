@@ -24,6 +24,7 @@
     "devDependencies": {
         "npm": "*",
         "grunt": "*",
+        "underscore": "*",
         "browserify": "git://github.com/domenic/node-browserify.git",
         "stylus": "*",
         "jshint": "*"

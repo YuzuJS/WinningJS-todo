@@ -4,6 +4,8 @@ var path = require("path");
 var jade = require("jade");
 var stylus = require("stylus");
 var browserify = require("browserify");
+var fs = require("fs");
+var _ = require("underscore");
 
 module.exports = function (grunt) {
     // TODO: factor out this grunt task into a separate project?
@@ -18,7 +20,8 @@ module.exports = function (grunt) {
 
     function browserifyJade(body, file) {
         var templateFunction = jade.compile(body, { filename: file, compileDebug: false, client: true });
-        return "module.exports = " + templateFunction.toString() + ";";
+        var jadeModuleTemplate = fs.readFileSync(path.resolve(__dirname, "build", "jadeModule.tmpl.js")).toString();
+        return _.template(jadeModuleTemplate, { templateFunctionSource: templateFunction.toString() });
     }
 
     function doBrowserify(entryFile, dest, aliases) {
