@@ -1,6 +1,1 @@
-div
-	div(id="listTemplate", data-win-control="WinJS.Binding.Template")
-		div.listItemContainer
-			div(class="listItem",data-win-bind="innerText: name")
-
-	div(id="todoList",data-win-control="WinJS.UI.ListView",data-win-options="{select('#listTemplate')}")
+div(id="todoList",data-win-control="WinJS.UI.ListView",data-win-options="{itemTemplate: select('#listTemplate')}")

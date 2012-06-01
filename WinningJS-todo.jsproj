@@ -58,6 +58,7 @@
     <Content Include="lib\components\BottomAppBar\template.jade" />
     <Content Include="lib\components\BottomAppBar\index.js" />
     <Content Include="lib\components\ListView\index.js" />
+    <Content Include="lib\components\ListView\itemtemplate.jade" />
     <Content Include="lib\components\ListView\template.jade" />
     <Content Include="lib\components\List\index.js" />
     <Content Include="lib\components\List\template.jade" />
