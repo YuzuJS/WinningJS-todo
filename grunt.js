@@ -5,6 +5,7 @@ var jade = require("jade");
 var stylus = require("stylus");
 
 var doBrowserify = require("./build/browserify");
+var doStylus = require("./build/stylus");
 
 module.exports = function (grunt) {
     // TODO: factor out this grunt task into a separate project?
@@ -12,32 +13,6 @@ module.exports = function (grunt) {
 
     // TODO: jQuery is making our build process take way too long (probably because it's scanning the jQuery source
     // code for `require`s). Unacceptable; this is JavaScript not C++.
-
-    function urlize(path) {
-        return "/" + path.replace(/\\/g, "/");
-    }
-
-    function buildStylus(source, dest) {
-        var files = grunt.file.expandFiles(source);
-        var newFileUrls = [];
-        files.forEach(function (fileName) {
-            var str = grunt.file.read(fileName);
-            var newFileName = fileName.match(/(.*).styl/)[1] + ".css";
-            var newFilePath = path.join(dest, newFileName);
-            stylus.render(str, { filename: newFileName }, function (err, css) {
-                if (err) {
-                    grunt.warn(err.message);
-                } else {
-                    grunt.file.write(newFilePath, css);
-                    grunt.log.writeln("File \"" + newFilePath + "\" created.");
-
-                    newFileUrls.push(urlize(newFilePath));
-                }
-            });
-        });
-
-        return newFileUrls;
-    }
 
     function writeIndex(src, dest, jadeLocals) {
         var jadeFile = grunt.file.read(src);
@@ -52,7 +27,7 @@ module.exports = function (grunt) {
         var scripts = doBrowserify(grunt, __dirname, browserifyConfig);
 
         var stylusConfig = grunt.config("buildIndex.stylus");
-        var styles = buildStylus(stylusConfig.src, stylusConfig.dest);
+        var styles = doStylus(grunt, __dirname, stylusConfig);
 
         var indexConfig = grunt.config("buildIndex");
         indexConfig.src = indexConfig.src ? path.normalize(indexConfig.src) : "index.jade";
