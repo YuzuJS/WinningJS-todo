@@ -75,7 +75,7 @@
     <Content Include="images\**\*.*" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.WinJS, Version=0.6" />
+    <SDKReference Include="Microsoft.WinJS.1.0.RC, Version=1.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="node_modules\" />
