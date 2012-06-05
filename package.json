@@ -25,7 +25,7 @@
         "npm": "*",
         "grunt": "*",
         "underscore": "*",
-        "browserify": "git://github.com/domenic/node-browserify.git",
+        "browserify": "git://github.com/domenic/node-browserify.git#windows",
         "stylus": "*",
         "jshint": "*"
     },

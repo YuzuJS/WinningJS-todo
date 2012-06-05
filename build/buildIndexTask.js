@@ -32,7 +32,7 @@ module.exports = function (grunt) {
         writeIndex(indexConfig.src, indexConfig.dest, {
             scripts: scripts,
             styles: styles,
-            entryModule: browserifyConfig.entry
+            entryModule: "./" + browserifyConfig.entry
         });
     });
 };
