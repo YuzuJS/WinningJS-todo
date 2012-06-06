@@ -13,7 +13,7 @@ function makePreludeFile(baseDir, aliases) {
     // Passing the alias map to `browserify()` will include the aliased files in the prelude, plus the `require.alias`
     // calls. TODO: it would be cool to have the aliased files separate. But then it becomes tricky to include the
     // `require.alias` calls.
-    var bundle = browserify({ require: aliases });
+    var bundle = browserify({ require: aliases, cache: true });
 
     // Also include the Jade runtime. TODO: make configurable.
     bundle.require(path.resolve(baseDir, "node_modules/jade/runtime.js"));
@@ -25,7 +25,7 @@ function makePreludeFile(baseDir, aliases) {
 }
 
 function makeWrappedModules(baseDir, aliases, entryFile) {
-    var bundle = browserify();
+    var bundle = browserify({ cache: true });
 
     // We manually call `bundle.alias` here so that the files we include know about the aliases during build time, even
     // though the actual aliased file contents and the `require.alias` calls will end up in the prelude file (cf. above).
