@@ -7,7 +7,10 @@ var _ = require("underscore");
 
 var jadeModuleTemplate = fs.readFileSync(path.resolve(__dirname, "jadeModule.jstmpl")).toString();
 
-exports[".jade"] = function browserifyJade(body, file) {
-    var templateFunction = jade.compile(body, { filename: file, compileDebug: false, client: true });
-    return _.template(jadeModuleTemplate, { templateFunctionSource: templateFunction.toString() });
+exports[".jade"] = {
+    includeScripts: [require.resolve("jade/runtime")],
+    handler: function (body, file) {
+        var templateFunction = jade.compile(body, { filename: file, compileDebug: false, client: true });
+        return _.template(jadeModuleTemplate, { templateFunctionSource: templateFunction.toString() });
+    }
 };

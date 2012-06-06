@@ -15,9 +15,6 @@ function makePreludeFile(baseDir, aliases) {
     // `require.alias` calls.
     var bundle = browserify({ require: aliases, cache: true });
 
-    // Also include the Jade runtime. TODO: make configurable.
-    bundle.require(path.resolve(baseDir, "node_modules/jade/runtime.js"));
-
     // This will return a string containing the contents of the prelude file, which is essentially all the Browserify
     // definitions (i.e. `require`, `require.define`, etc.), plus the stuff we added above (calls to `require.alias`,
     // Jade runtime).
@@ -28,14 +25,14 @@ function makeWrappedModules(baseDir, aliases, entryFile) {
     var bundle = browserify({ cache: true });
 
     // We manually call `bundle.alias` here so that the files we include know about the aliases during build time, even
-    // though the actual aliased file contents and the `require.alias` calls will end up in the prelude file (cf. above).
+    // though the actual aliased file contents and the `require.alias` calls will end up in the prelude file (above).
     Object.keys(aliases).forEach(function (alias) {
         bundle.alias(alias, aliases[alias]);
     });
 
     // Registering browserify handlers will allow the browserified .js modules to require other things, like Jade.
     Object.keys(browserifyHandlers).forEach(function (extension) {
-        bundle.register(extension, browserifyHandlers[extension]);
+        bundle.register(extension, browserifyHandlers[extension].handler);
     });
 
     // Just require the entry file: this will create entries in the bundle for all files it requires, recursively.
@@ -52,16 +49,44 @@ function makeWrappedModules(baseDir, aliases, entryFile) {
 }
 
 module.exports = function (grunt, baseDir, config) {
+    function asInDest(relativePath) {
+        // Take a relative path and make it a relative path, but inside config.dest.
+        return path.relative(process.cwd(), path.resolve(config.dest, relativePath));
+    }
+
+    // Create and write out the prelude file.
     var prelude = makePreludeFile(baseDir, config.aliases);
-    var preludeDest = path.relative(process.cwd(), path.resolve(config.dest, "browserify.js"));
+    var preludeDest = asInDest("browserify.js");
     grunt.file.write(preludeDest, prelude);
     grunt.log.writeln("Browserify prelude created at \"" + preludeDest + "\"");
 
+    // Start assembling the array of new file URLs, which will manifest as <script src="..."> tags.
+    // The prelude definitely goes there.
+    var newFileUrls = [urlize(preludeDest)];
+
+    // Each browserify handler can specify an array of scripts that should be included. Copy those to the destination
+    // directory, and include them in `newFileUrls`.
+    Object.keys(browserifyHandlers).forEach(function (extension) {
+        var scriptFilenames = browserifyHandlers[extension].includeScripts;
+        var relativeScriptFilenames = scriptFilenames.map(function (fileName) {
+            return path.relative(process.cwd(), fileName);
+        });
+        var scriptsInDest = relativeScriptFilenames.map(asInDest);
+
+        scriptsInDest.forEach(function (scriptInDest, i) {
+            grunt.file.copy(scriptFilenames[i], scriptInDest);
+            grunt.log.writeln("Browserify handler script copied to \"" + scriptInDest + "\"");
+
+            newFileUrls.push(urlize(scriptInDest));
+        });
+    });
+
+    // Make a map of relative file paths to wrapped module bodies.
     var wrappedModules = makeWrappedModules(baseDir, config.aliases, config.entry);
 
-    var newFileUrls = [urlize(preludeDest)];
+    // Write the wrapped module bodies to the destination directory, and include them in `newFileURls`.
     Object.keys(wrappedModules).forEach(function (filePath) {
-        var newFilePath = path.relative(process.cwd(), path.resolve(config.dest, filePath));
+        var newFilePath = asInDest(filePath);
         var newFileContents = wrappedModules[filePath];
 
         grunt.file.write(newFilePath, newFileContents);

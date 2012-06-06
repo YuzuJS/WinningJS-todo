@@ -13,10 +13,9 @@ html
         each script in scripts
             script(src=script)
 
-        //- Require the entry module (determined at compile time), plus the Jade runtime for templates to use.
+        //- Require the entry module (determined at compile time).
         script
             require("#{entryModule}");
-            require("jade/runtime");
 
         //- Automatically inserted styles
         each style in styles
