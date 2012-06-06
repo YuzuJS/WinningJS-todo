@@ -25,13 +25,12 @@
         "npm": "*",
         "grunt": "*",
         "underscore": "*",
-        "browserify": "git://github.com/domenic/node-browserify.git#windows",
+        "browserify": ">= 1.12.1",
         "stylus": "*",
         "jshint": "*"
     },
     "_dependencyComments": {
-        "WinningJS": "Not published on npm yet, since it is not near release-quality.",
-        "browserify": "Needs to work on Windows, and with relative paths."
+        "WinningJS": "Not published on npm yet, since it is not near release-quality."
     },
     "engines": {
         "node": "*"
