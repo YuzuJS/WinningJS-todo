@@ -6,6 +6,7 @@ var path = require("path");
 var jade = require("jade");
 var doBrowserify = require("./doBrowserify");
 var doStylus = require("./doStylus");
+var getStackFrames = require("./utils").getStackFrames;
 
 var baseDir = path.resolve(__dirname, ".."); // TODO don't do this, only browserify needs it, and maybe it doesn't.
 
@@ -18,7 +19,7 @@ module.exports = function (grunt) {
         grunt.log.writeln("File \"" + dest + "\" created");
     }
 
-    grunt.registerTask("buildIndex", "Browserify modules, compile Stylus, and build an index.html.", function () {
+    function doBuildIndex() {
         var browserifyConfig = grunt.config("buildIndex.browserify");
         var scripts = doBrowserify(grunt, baseDir, browserifyConfig);
 
@@ -34,5 +35,22 @@ module.exports = function (grunt) {
             styles: styles,
             entryModule: "./" + browserifyConfig.entry
         });
+    }
+
+    grunt.registerTask("buildIndex", "Browserify modules, compile Stylus, and build an index.html.", function () {
+        try {
+            doBuildIndex();
+        } catch (error) {
+            var frames = getStackFrames(error);
+
+            var fileName = frames[0].getFileName();
+            var line = frames[0].getLineNumber();
+            var column = frames[0].getColumnNumber();
+            var code = error.name;
+            var message = error.message;
+
+            // Visual Studio error format: http://msdn.microsoft.com/en-us/library/yxkt8b26%28v=vs.110%29.aspx
+            console.error(fileName + "(" + line + "," + column + "): error " + code + ": " + message);
+        }
     });
 };
