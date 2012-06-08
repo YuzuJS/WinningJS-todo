@@ -51,13 +51,13 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-
     <None Include="grunt.js" />
     <None Include="index.jade" />
     <None Include="styles\**\*.*" />
     <None Include="lib\**\*.*" />
     <None Include="package.json" />
     <None Include="WinningJS-todo_TemporaryKey.pfx" />
+    <Content Include="lib\todos.js" />
     <Content Include="out\**\*.*" />
     <Content Include="images\**\*.*" />
   </ItemGroup>
