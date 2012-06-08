@@ -27,7 +27,8 @@
         "underscore": "*",
         "browserify": ">= 1.12.1",
         "stylus": "*",
-        "jshint": "*"
+        "jshint": "*",
+        "q": ">= 0.8.5"
     },
     "_dependencyComments": {
         "WinningJS": "Not published on npm yet, since it is not near release-quality."

@@ -1,21 +1,46 @@
 #!/usr/bin/env node
 
 var npm = require("npm");
+var childProcess = require("child_process");
+var Q = require("q");
 
-npm.load(function (err) {
-    if (err) {
-        throw err;
-    }
-
-    npm.commands.test(function (err) {
+function exec(command) {
+    var deferred = Q.defer();
+    childProcess.exec(command, function (err, stdout, stderr) {
         if (err) {
-            process.exit(1);
+            deferred.reject(err);
+            return;
         }
 
-        npm.commands["run-script"](["lint"], function (err) {
-            if (err) {
-                process.exit(1);
-            }
-        });
+        console.log(stdout.toString());
+        console.error(stderr.toString());
+
+        deferred.resolve();
     });
-});
+
+    return deferred.promise;
+}
+
+function npmLoad() {
+    return Q.ninvoke(npm, "load");
+}
+function npmTest() {
+    return Q.ninvoke(npm.commands, "test");
+}
+function npmRunScriptLint() {
+    return Q.ninvoke(npm.commands, "run-script", ["lint"]);
+}
+
+Q.begin().then(function () {
+    return exec("git stash --keep-index -q");
+})
+.then(npmLoad)
+.then(npmTest)
+.then(npmRunScriptLint)
+.then(function () {
+    return exec("git stash pop -q");
+})
+.fail(function () {
+    process.exit(1);
+})
+.end();
