@@ -57,6 +57,7 @@
     <None Include="lib\**\*.*" />
     <None Include="package.json" />
     <None Include="WinningJS-todo_TemporaryKey.pfx" />
+    <Content Include="lib\converters.js" />
     <Content Include="lib\todos.js" />
     <Content Include="out\**\*.*" />
     <Content Include="images\**\*.*" />
