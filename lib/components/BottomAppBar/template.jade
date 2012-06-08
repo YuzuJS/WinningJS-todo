@@ -1,3 +1,11 @@
-div(data-win-control="WinJS.UI.AppBar", data-win-options="{placement:'bottom',disabled: true}")
-	button(data-win-control="WinJS.UI.AppBarCommand", data-win-options="{id:'cmdDelete',label:'Delete Task',icon:'delete',section:'selection'}", style="visibility:hidden")
-	button(data-win-control="WinJS.UI.AppBarCommand", data-win-options="{id:'cmdComplete',label:'Complete',icon:'accept',section:'selection'}", style="visibility:hidden")
+div(data-win-control="WinJS.UI.AppBar", data-win-options="{ placement: 'bottom', disabled: true }")
+	button(
+        data-win-control="WinJS.UI.AppBarCommand",
+        data-win-options="{ id: 'cmd-delete', label: 'Delete Task', icon: 'delete', section: 'selection' }",
+        style="visibility: hidden"
+    )
+	button(
+        data-win-control="WinJS.UI.AppBarCommand",
+        data-win-options="{ id: 'cmd-complete', label: 'Complete', icon: 'accept', section: 'selection' }",
+        style="visibility: hidden"
+    )
