@@ -28,7 +28,8 @@
         "browserify": ">= 1.12.1",
         "stylus": "*",
         "jshint": "*",
-        "q": ">= 0.8.5"
+        "q": ">= 0.8.5",
+        "q-fs": ">= 0.1.27"
     },
     "_dependencyComments": {
         "WinningJS": "Not published on npm yet, since it is not near release-quality."

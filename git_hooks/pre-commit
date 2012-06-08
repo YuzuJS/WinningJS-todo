@@ -3,6 +3,10 @@
 var npm = require("npm");
 var childProcess = require("child_process");
 var Q = require("q");
+var fs = require("q-fs");
+var path = require("path");
+
+var TEXT_FILES = [".coffee", ".jade", ".js", ".styl", ".gitignore", ".jshintrc", ".npmignore"];
 
 function exec(command) {
     var deferred = Q.defer();
@@ -12,10 +16,8 @@ function exec(command) {
             return;
         }
 
-        console.log(stdout.toString());
         console.error(stderr.toString());
-
-        deferred.resolve();
+        deferred.resolve(stdout.toString());
     });
 
     return deferred.promise;
@@ -30,6 +32,29 @@ function npmTest() {
 function npmRunScriptLint() {
     return Q.ninvoke(npm.commands, "run-script", ["lint"]);
 }
+function getChangedFileNames() {
+    return exec("git diff --cached --name-only").then(function (stdout) {
+        return stdout.split("\n").filter(function (x) { return !!x; });
+    });
+}
+function checkFileEnds() {
+    return getChangedFileNames().then(function (changedFileNames) {
+        var filesToCheck = changedFileNames.filter(function (changedFileName) {
+            var ext = path.extname(changeFileName);
+            return TEXT_FILES.indexOf(ext) !== -1;
+        });
+
+        return Q.all(filesToCheck.map(function (fileToCheck) {
+            return fs.read(fileToCheck).then(function (fileContents) {
+                if (!/\n$/.test(fileContents.toString())) {
+                    var errorMessage = changedFileName + " should end with a newline.";
+                    console.error(errorMessage);
+                    throw new Error(errorMessage);
+                }
+            });
+        }));
+    });
+}
 
 Q.begin().then(function () {
     return exec("git stash --keep-index -q");
@@ -37,7 +62,8 @@ Q.begin().then(function () {
 .then(npmLoad)
 .then(npmTest)
 .then(npmRunScriptLint)
-.then(function () {
+.then(checkFileEnds)
+.fin(function () {
     return exec("git stash pop -q");
 })
 .fail(function () {
