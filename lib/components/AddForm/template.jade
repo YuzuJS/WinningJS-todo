@@ -1,3 +1,3 @@
-form.add-todo-form(data-bind="submit: addTodo")
-	input#todo(type="text", placeholder="New Todo", required, data-bind="value: text")
-	button#add-task Add
+form(data-bind="submit: addTodo")
+    input(type="text", placeholder="New Todo", required, data-bind="value: text")
+    button Add
