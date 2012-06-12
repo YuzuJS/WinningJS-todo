@@ -55,6 +55,7 @@
     <None Include="index.jade" />
     <None Include="styles\**\*.*" />
     <None Include="lib\**\*.*" />
+    <None Include="components\**\*.*" />
     <None Include="package.json" />
     <None Include="WinningJS-todo_TemporaryKey.pfx" />
     <Content Include="out\**\*.*" />
