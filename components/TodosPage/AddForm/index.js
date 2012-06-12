@@ -5,13 +5,13 @@ var template = require("./template.jade");
 var AddFormViewModel = require("./ViewModel");
 var makeEmitter = require("pubit").makeEmitter;
 
-module.exports = function TodosPageAddForm() {
+module.exports = function TodosPageAddForm(todos) {
     var that = this;
 
     var publish = makeEmitter(that, ["add"]);
     var presenter = new Presenter({
         template: template,
-        viewModel: new AddFormViewModel(publish)
+        viewModel: new AddFormViewModel(todos)
     });
 
     presenter.element.then(function (element) {
