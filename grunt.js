@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                 }
             },
             stylus: {
-                src: ["**/*.styl"],
+                src: ["styles/**/*.styl", "components/**/*.styl"],
                 dest: "out/css"
             }
         }
