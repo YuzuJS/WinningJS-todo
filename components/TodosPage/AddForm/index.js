@@ -1,6 +1,5 @@
 ﻿"use strict";
 
-var ko = require("knockout");
 var Presenter = require("WinningJS/lib/ui/Presenter");
 var template = require("./template.jade");
 var AddFormViewModel = require("./ViewModel");

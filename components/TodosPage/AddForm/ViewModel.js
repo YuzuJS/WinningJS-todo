@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-var ko = require("knockout");
+var ko = require("knockoutify");
 
 module.exports = function AddFormViewModel(publish) {
     var that = this;
