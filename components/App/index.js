@@ -4,15 +4,12 @@ var Presenter = require("WinningJS/lib/ui/Presenter");
 var template = require("./template.jade");
 var $ = require("jquery");
 
-module.exports = function App(addTodoUI, todoListUI, bottomBarUI, navBarUI, aboutUsUI, nav) {
+module.exports = function App(todosPage, aboutPage, nav) {
     var presenter = new Presenter({
         template: template,
         renderables: {
-            add: addTodoUI,
-            todoList: todoListUI,
-            bottomBar: bottomBarUI,
-            navBar: navBarUI,
-            aboutUs: aboutUsUI
+            todosPage: todosPage,
+            aboutPage: aboutPage
         }
     });
 
@@ -24,10 +21,7 @@ module.exports = function App(addTodoUI, todoListUI, bottomBarUI, navBarUI, abou
         }).end();
     }
 
-    this.render = presenter.process;
-
-    addTodoUI.on("add", todoListUI.addTodo);
-    bottomBarUI.on("delete", todoListUI.deleteTodo);
-    bottomBarUI.on("complete", todoListUI.completeTodo);
     nav.addEventListener("navigated", navigated);
+
+    this.render = presenter.process;
 };

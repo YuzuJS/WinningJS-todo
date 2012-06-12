@@ -6,7 +6,7 @@ var template = require("./template.jade");
 var AddFormViewModel = require("./ViewModel");
 var makeEmitter = require("pubit").makeEmitter;
 
-module.exports = function AddForm() {
+module.exports = function TodosPageAddForm() {
     var that = this;
 
     var publish = makeEmitter(that, ["add"]);
