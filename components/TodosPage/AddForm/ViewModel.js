@@ -1,13 +1,14 @@
 ﻿"use strict";
 
-var ko = require("knockout");
+var ko = require("knockoutify");
 
-module.exports = function AddFormViewModel(publish) {
+module.exports = function AddFormViewModel(todos) {
     var that = this;
 
     that.text = ko.observable("");
+
     that.addTodo = function () {
-        publish("add", that.text());
+        todos.add(that.text());
         that.text("");
     };
 };
