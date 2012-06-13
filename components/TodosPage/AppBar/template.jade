@@ -1,9 +1,11 @@
-div(data-win-control="WinJS.UI.AppBar", data-win-options="{ placement: 'bottom', disabled: true }")
+div(data-win-control="WinJS.UI.AppBar", data-win-options="{ placement: 'bottom' }")
     button(
         data-win-control="WinJS.UI.AppBarCommand",
         data-win-options="{ id: 'delete', label: 'Delete Task', icon: 'delete', section: 'selection' }",
+        data-winning-command-group="todos-selected"
     )
     button(
         data-win-control="WinJS.UI.AppBarCommand",
         data-win-options="{ id: 'complete', label: 'Complete', icon: 'accept', section: 'selection' }",
+        data-winning-command-group="todos-selected"
     )

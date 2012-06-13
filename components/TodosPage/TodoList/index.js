@@ -7,7 +7,7 @@ var template = require("./template.jade");
 var itemTemplate = require("./itemTemplate.jade");
 var makeEmitter = require("pubit").makeEmitter;
 
-module.exports = function TodosPageTodoList(todos, setCommandContext) {
+module.exports = function TodosPageTodoList(todos, showCommands) {
     var that = this;
 
     var presenter = new Presenter({
@@ -21,7 +21,7 @@ module.exports = function TodosPageTodoList(todos, setCommandContext) {
     presenter.winControl.then(function (winControl) {
         winControl.addEventListener("iteminvoked", function () {
             var items = winControl.selection.getItems();
-            setCommandContext(items);
+            showCommands("todos-selected", items);
         });
     });
 

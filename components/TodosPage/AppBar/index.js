@@ -11,7 +11,7 @@ module.exports = function TodosPageAppBar() {
 
     that.render = presenter.process;
 
-    that.setCommandContext = function () {
+    that.showCommands = function (commandGroup, context) {
         // TODO
     };
 };
