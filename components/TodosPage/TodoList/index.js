@@ -2,11 +2,9 @@
 /*global WinJS: false */
 
 var Q = require("q");
-var $ = require("jquery");
 var Presenter = require("WinningJS/lib/ui/Presenter");
 var template = require("./template.jade");
 var itemTemplate = require("./itemTemplate.jade");
-var makeEmitter = require("pubit").makeEmitter;
 
 module.exports = function TodosPageTodoList(todos, showCommands) {
     var that = this;
