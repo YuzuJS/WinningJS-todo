@@ -45,7 +45,7 @@
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>WinningJS-todo_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>929923E3D0298086DC261ACC99F65C1ED20178EA</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>B68932382E2661620BD9E6ABC58EC5AFE4282DF2</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -55,6 +55,7 @@
     <None Include="index.jade" />
     <None Include="styles\**\*.*" />
     <None Include="lib\**\*.*" />
+    <None Include="components\**\*.*" />
     <None Include="package.json" />
     <None Include="WinningJS-todo_TemporaryKey.pfx" />
     <Content Include="out\**\*.*" />

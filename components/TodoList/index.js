@@ -7,7 +7,7 @@ var template = require("./template.jade");
 var itemTemplate = require("./itemTemplate.jade");
 var makeEmitter = require("pubit").makeEmitter;
 
-module.exports = function ListView(todos, storage, bottomAppBar) {
+module.exports = function TodoList(todos, storage, bottomAppBar) {
     var that = this;
 
     var publish = makeEmitter(that, ["select"]);
