@@ -15,7 +15,6 @@ module.exports = function (grunt) {
                 entry: "lib/start",
                 dest: "out/browserified",
                 aliases: {
-                    "knockout": "knockoutify",
                     "jquery": "jquery-browserify"
                 }
             },
