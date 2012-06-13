@@ -1,6 +1,7 @@
 ﻿"use strict";
 /*global WinJS: false */
 
+var Q = require("q");
 var $ = require("jquery");
 var Presenter = require("WinningJS/lib/ui/Presenter");
 var template = require("./template.jade");
@@ -20,7 +21,10 @@ module.exports = function TodosPageTodoList(todos, showCommands) {
 
     presenter.winControl.then(function (winControl) {
         winControl.addEventListener("iteminvoked", function () {
-            var items = winControl.selection.getItems();
+            // Note a few wierd things: `getItems()` returns a promise, and the array it returns is of `{ key, data }`
+            // objects, not just the elements of the collection. Think about how we want to deal with this.
+            var items = Q.when(winControl.selection.getItems());
+
             showCommands("todos-selected", items);
         });
     });
