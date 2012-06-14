@@ -16,8 +16,7 @@ function makePreludeFile(baseDir, aliases) {
     var bundle = browserify({ require: aliases, cache: true });
 
     // This will return a string containing the contents of the prelude file, which is essentially all the Browserify
-    // definitions (i.e. `require`, `require.define`, etc.), plus the stuff we added above (calls to `require.alias`,
-    // Jade runtime).
+    // definitions (i.e. `require`, `require.define`, etc.), plus the alias files we included above.
     return bundle.bundle();
 }
 
