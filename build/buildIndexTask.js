@@ -38,6 +38,8 @@ module.exports = function (grunt) {
     }
 
     grunt.registerTask("buildIndex", "Browserify modules, compile Stylus, and build an index.html.", function () {
+        var done = this.async();
+
         try {
             doBuildIndex();
         } catch (error) {
@@ -51,6 +53,9 @@ module.exports = function (grunt) {
 
             // Visual Studio error format: http://msdn.microsoft.com/en-us/library/yxkt8b26%28v=vs.110%29.aspx
             console.error(fileName + "(" + line + "," + column + "): error " + code + ": " + message);
+        } finally {
+            // For some reason the errors don't make it to the UI unless you delay for a bit.
+            setTimeout(done, 10);
         }
     });
 };
