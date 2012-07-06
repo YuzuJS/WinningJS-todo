@@ -35,6 +35,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     <ProjectGuid>9f73fe12-b921-4b47-b540-8ee32aa2baca</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -64,15 +65,12 @@
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.1.0.RC, Version=1.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="node_modules\" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
-  <Target Name="BeforeBuild">
-    <!-- TODO get this to output nicely to the error list on failure, maybe without npm spew -->
+  <Target Name="BeforeBuild" Inputs="@(None)" Outputs="out\index.html">
     <!-- TODO automate npm install? -->
     <Exec Command="npm run-script before-build" />
   </Target>
-  <Target Name="AfterBuild">
+  <Target Name="BeforeClean">
+    <RemoveDir Directories="out" />
   </Target>
 </Project>
