@@ -6,7 +6,7 @@
     "private": true,
     "repository": {
         "type": "git",
-        "url": "https://github.com/NobleJS/WinningJS-todo"
+        "url": "https://github.com/NobleJS/WinningJS-todo.git"
     },
     "bugs": {
         "url": "http://github.com/NobleJS/WinningJS-todo/issues"
