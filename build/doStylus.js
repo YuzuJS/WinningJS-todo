@@ -4,7 +4,7 @@ var path = require("path");
 var stylus = require("stylus");
 var urlize = require("./utils").urlize;
 
-module.exports = function (grunt, baseDir, config) {
+module.exports = function (grunt, config) {
     var files = grunt.file.expandFiles(config.src);
 
     var newFileUrls = [];
@@ -20,7 +20,7 @@ module.exports = function (grunt, baseDir, config) {
                 grunt.warn(err.message);
             } else {
                 grunt.file.write(newFilePath, css);
-                grunt.log.writeln("File \"" + newFilePath + "\" created.");
+                grunt.log.writeln("CSS file created at \"" + newFilePath + "\".");
 
                 newFileUrls.push(urlize(newFilePath));
             }

@@ -1,10 +1,6 @@
 ﻿"use strict";
 
-exports.urlize = function (path) {
-    return "/" + path.replace(/\\/g, "/");
-};
-
-exports.getStackFrames = function (error) {
+function getStackFrames(error) {
     // http://code.google.com/p/v8/wiki/JavaScriptStackTraceApi
 
     // Replace the `Error.prepareStackTrace` function temporarily, to capture the frames.
@@ -22,4 +18,22 @@ exports.getStackFrames = function (error) {
     Error.prepareStackTrace = oldErrorPrepareStackTrace;
 
     return frames;
+}
+
+exports.urlize = function (path) {
+    return "/" + path.replace(/\\/g, "/");
+};
+
+exports.getVisualStudioBuildErrorMessage = function (error) {
+    // http://msdn.microsoft.com/en-us/library/yxkt8b26%28v=vs.110%29.aspx
+
+    var frames = getStackFrames(error);
+
+    var fileName = frames[0].getFileName();
+    var line = frames[0].getLineNumber();
+    var column = frames[0].getColumnNumber();
+    var code = error.name;
+    var message = error.message;
+
+    return fileName + "(" + line + "," + column + "): error " + code + ": " + message;
 };
