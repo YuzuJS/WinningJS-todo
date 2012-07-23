@@ -20,7 +20,7 @@ module.exports = function (grunt, baseDir, config) {
                 grunt.warn(err.message);
             } else {
                 grunt.file.write(newFilePath, css);
-                grunt.log.writeln("File \"" + newFilePath + "\" created.");
+                grunt.log.writeln("CSS file created at \"" + newFilePath + "\".");
 
                 newFileUrls.push(urlize(newFilePath));
             }
