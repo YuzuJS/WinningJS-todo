@@ -17,7 +17,6 @@
     },
     "dependencies": {
         "WinningJS": "git://github.com/NobleJS/WinningJS.git",
-        "jade": ">= 0.26.1",
         "jquery-browserify": ">= 1.7.2",
         "knockoutify": "git://github.com/guillaume86/knockoutify.git",
         "pubit": ">= 1.1.0"
@@ -25,15 +24,14 @@
     "devDependencies": {
         "npm": "*",
         "grunt": "*",
-        "underscore": "*",
-        "browserify": ">= 1.12.1",
-        "stylus": "*",
+        "WinningJS-build": "git://github.com/NobleJS/WinningJS-build.git",
         "jshint": "*",
         "q": ">= 0.8.5",
         "q-fs": ">= 0.1.27"
     },
     "_dependencyComments": {
         "WinningJS": "Not published on npm yet, since it is not near release-quality.",
+        "WinningJS-build": "Not published on npm yet, since it is not near release-quality.",
         "knockoutify": "Need version 2.1.0; the npm version is 2.0.0."
     }
 }

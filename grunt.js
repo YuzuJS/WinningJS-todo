@@ -1,15 +1,15 @@
 ﻿"use strict";
 
-var buildIndexTask = require("./build/buildIndexTask");
+var winningJSBuild = require("WinningJS-Build");
 
 module.exports = function (grunt) {
-    buildIndexTask(grunt);
+    winningJSBuild(grunt);
 
     grunt.initConfig({
         lint: {
             all: ["lib/**/*.js"]
         },
-        buildIndex: {
+        winningJS: {
             dest: "out/index.html",
             browserify: {
                 entry: "lib/start",
@@ -25,5 +25,5 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("default", "buildIndex");
+    grunt.registerTask("default", "winningJS");
 };
