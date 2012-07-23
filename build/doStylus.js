@@ -4,7 +4,7 @@ var path = require("path");
 var stylus = require("stylus");
 var urlize = require("./utils").urlize;
 
-module.exports = function (grunt, baseDir, config) {
+module.exports = function (grunt, config) {
     var files = grunt.file.expandFiles(config.src);
 
     var newFileUrls = [];

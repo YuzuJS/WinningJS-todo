@@ -8,8 +8,6 @@ var doBrowserify = require("./doBrowserify");
 var doStylus = require("./doStylus");
 var getVisualStudioBuildErrorMessage = require("./utils").getVisualStudioBuildErrorMessage;
 
-var baseDir = path.resolve(__dirname, ".."); // TODO don't do this, only browserify needs it, and maybe it doesn't.
-
 module.exports = function (grunt) {
     function writeIndex(src, dest, jadeLocals) {
         var jadeFile = grunt.file.read(src);
@@ -21,10 +19,10 @@ module.exports = function (grunt) {
 
     function doBuildIndex() {
         var browserifyConfig = grunt.config("buildIndex.browserify");
-        var scripts = doBrowserify(grunt, baseDir, browserifyConfig);
+        var scripts = doBrowserify(grunt, browserifyConfig);
 
         var stylusConfig = grunt.config("buildIndex.stylus");
-        var styles = doStylus(grunt, baseDir, stylusConfig);
+        var styles = doStylus(grunt, stylusConfig);
 
         var indexConfig = grunt.config("buildIndex");
         indexConfig.src = indexConfig.src ? path.normalize(indexConfig.src) : "index.jade";
