@@ -35,8 +35,5 @@
     "_dependencyComments": {
         "WinningJS": "Not published on npm yet, since it is not near release-quality.",
         "knockoutify": "Need version 2.1.0; the npm version is 2.0.0."
-    },
-    "engines": {
-        "node": "*"
     }
 }
