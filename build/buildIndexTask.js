@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         var templateFunction = jade.compile(jadeFile, { filename: src, compileDebug: false, pretty: true });
         var indexHtml = templateFunction(jadeLocals);
         grunt.file.write(dest, indexHtml);
-        grunt.log.writeln("File \"" + dest + "\" created");
+        grunt.log.writeln("Main HTML file created at \"" + dest + "\".");
     }
 
     function doBuildIndex() {
