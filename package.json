@@ -16,16 +16,16 @@
         "lint": "jshint lib components"
     },
     "dependencies": {
+        "grunt": ">= 0.3.17",
         "jquery-browserify": ">= 1.8.1",
         "knockoutify": ">= 2.2.0",
         "pubit": ">= 1.2.1",
-        "WinningJS": "git://github.com/NobleJS/WinningJS.git"
+        "q": ">= 0.8.10",
+        "WinningJS": "git://github.com/NobleJS/WinningJS.git",
+        "winningjs-build": ">= 0.2.0"
     },
     "devDependencies": {
-        "grunt": ">= 0.3.17",
-        "jshint": ">= 0.9.1",
-        "q": ">= 0.8.10",
-        "winningjs-build": ">= 0.2.0"
+        "jshint": ">= 0.9.1"
     },
     "_dependencyComments": {
         "WinningJS": "Not published on npm yet, since it is not near release-quality."
