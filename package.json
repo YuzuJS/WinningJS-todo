@@ -1,19 +1,19 @@
 {
-    "name": "WinningJS-todo",
+    "name": "winningjs-todo",
     "description": "Demo todo list application for Windows 8, built on the WinningJS framework",
     "version": "1.0.0",
     "author": "NobleJS",
     "private": true,
     "repository": {
         "type": "git",
-        "url": "https://github.com/NobleJS/WinningJS-todo.git"
+        "url": "git://github.com/NobleJS/WinningJS-todo.git"
     },
     "bugs": {
         "url": "http://github.com/NobleJS/WinningJS-todo/issues"
     },
     "scripts": {
         "before-build": "grunt.cmd",
-        "lint": "jshint lib --show-non-errors"
+        "lint": "jshint lib components"
     },
     "dependencies": {
         "jquery-browserify": ">= 1.8.1",
