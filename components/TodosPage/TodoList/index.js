@@ -26,7 +26,7 @@ module.exports = function TodosPageTodoList(todos, showCommands) {
             itemTemplate: new WinJS.Binding.Template(itemTemplate.toElement())
         },
         viewModel: { selectItems: selectItems }
-    });               
+    });
 
     that.render = presenter.process;
 };
