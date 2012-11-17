@@ -1,24 +1,19 @@
-doctype 5
 html
     head
         meta(charset="utf-8")
-        title NOOK Study
+        title WinningJS Todo
 
         //- WinJS references
-        link(href="//Microsoft.WinJS.1.0.RC/css/ui-dark.css", rel="stylesheet")
-        script(src="//Microsoft.WinJS.1.0.RC/js/base.js")
-        script(src="//Microsoft.WinJS.1.0.RC/js/ui.js")
+        link(href="//Microsoft.WinJS.1.0/css/ui-dark.css", rel="stylesheet")
+        script(src="//Microsoft.WinJS.1.0/js/base.js")
+        script(src="//Microsoft.WinJS.1.0/js/ui.js")
 
         //- Automatically inserted scripts
         each script in scripts
             script(src=script)
 
-        //- Require the entry module (determined at compile time).
-        script
-            require("#{entryModule}");
-
         //- Automatically inserted styles
         each style in styles
-            link(href="#{style}", rel="stylesheet")
+            link(href=style, rel="stylesheet")
 
     body
