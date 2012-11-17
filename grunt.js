@@ -1,22 +1,19 @@
 ﻿"use strict";
 
-var winningJSBuild = require("WinningJS-Build");
-
 module.exports = function (grunt) {
-    winningJSBuild(grunt);
-
+    grunt.loadNpmTasks("winningjs-build");
+    
     grunt.initConfig({
-        lint: {
-            all: ["lib/**/*.js"]
-        },
-        winningJS: {
+        "WinningJS-build": {
+            src: "index.jade",
             dest: "out/index.html",
             browserify: {
-                entry: "lib/start",
+                entry: "lib/start.js",
                 dest: "out/browserified",
                 aliases: {
                     "jquery": "jquery-browserify"
-                }
+                },
+                middleware: [require("simple-jadeify")]
             },
             stylus: {
                 src: ["styles/**/*.styl", "components/**/*.styl"],
@@ -25,5 +22,5 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("default", "winningJS");
+    grunt.registerTask("default", "WinningJS-build");
 };

@@ -21,6 +21,7 @@
         "knockoutify": ">= 2.2.0",
         "pubit": ">= 1.2.1",
         "q": ">= 0.8.10",
+        "simple-jadeify": ">= 1.0.0",
         "WinningJS": "git://github.com/NobleJS/WinningJS.git",
         "winningjs-build": ">= 0.2.0"
     },
