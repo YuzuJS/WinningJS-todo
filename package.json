@@ -24,9 +24,7 @@
     "devDependencies": {
         "grunt": ">= 0.3.11",
         "jshint": ">= 0.7.1",
-        "npm": "*",
         "q": ">= 0.8.5",
-        "q-fs": ">= 0.1.29",
         "WinningJS-build": "git://github.com/NobleJS/WinningJS-build.git"
     },
     "_dependencyComments": {
