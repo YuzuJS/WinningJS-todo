@@ -16,20 +16,18 @@
         "lint": "jshint lib --show-non-errors"
     },
     "dependencies": {
-        "jquery-browserify": ">= 1.7.2",
-        "knockoutify": "git://github.com/guillaume86/knockoutify.git",
-        "pubit": ">= 1.1.0",
+        "jquery-browserify": ">= 1.8.1",
+        "knockoutify": ">= 2.2.0",
+        "pubit": ">= 1.2.1",
         "WinningJS": "git://github.com/NobleJS/WinningJS.git"
     },
     "devDependencies": {
-        "grunt": ">= 0.3.11",
-        "jshint": ">= 0.7.1",
-        "q": ">= 0.8.5",
-        "WinningJS-build": "git://github.com/NobleJS/WinningJS-build.git"
+        "grunt": ">= 0.3.17",
+        "jshint": ">= 0.9.1",
+        "q": ">= 0.8.10",
+        "winningjs-build": ">= 0.2.0"
     },
     "_dependencyComments": {
-        "knockoutify": "Need version 2.1.0; the npm version is 2.0.0.",
-        "WinningJS": "Not published on npm yet, since it is not near release-quality.",
-        "WinningJS-build": "Not published on npm yet, since it is not near release-quality."
+        "WinningJS": "Not published on npm yet, since it is not near release-quality."
     }
 }
