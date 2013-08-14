@@ -1,8 +1,9 @@
 ﻿"use strict";
-/*global WinJS: false */
 
 var Q = require("q");
 var Presenter = require("WinningJS/lib/ui/Presenter");
+var rendererFromTemplate = require("WinningJS/lib/ui/renderers").fromTemplate;
+
 var template = require("./template.jade");
 var itemTemplate = require("./itemTemplate.jade");
 
@@ -21,12 +22,14 @@ module.exports = function TodosPageTodoList(todos, showCommands) {
 
     var presenter = new Presenter({
         template: template,
-        ui: {
-            itemDataSource: todos.dataSource,
-            itemTemplate: new WinJS.Binding.Template(itemTemplate.toElement())
+        winControls: {
+            ":scope": {
+                itemDataSource: todos.dataSource,
+                itemTemplate: rendererFromTemplate(itemTemplate)
+            }
         },
         viewModel: { selectItems: selectItems }
     });
 
-    that.render = presenter.process;
+    that.render = presenter.render;
 };

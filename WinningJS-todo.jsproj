@@ -52,7 +52,7 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="grunt.js" />
+    <None Include="Gruntfile.js" />
     <None Include="index.jade" />
     <None Include="styles\**\*.*" />
     <None Include="lib\**\*.*" />

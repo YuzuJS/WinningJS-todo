@@ -1,11 +1,13 @@
 ﻿"use strict";
 
 var Presenter = require("WinningJS/lib/ui/Presenter");
+var mixinShowable = require("WinningJS/lib/ui/components").mixinShowable;
+
 var template = require("./template.jade");
 
 module.exports = function AboutPage() {
-    var that = this;
     var presenter = new Presenter({ template: template });
+    mixinShowable(this, presenter);
 
-    that.render = presenter.process;
+    this.render = presenter.render;
 };

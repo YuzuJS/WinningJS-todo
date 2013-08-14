@@ -13,7 +13,7 @@ module.exports = function TodosPageAppBar(todos) {
         viewModel: viewModel
     });
 
-    that.render = presenter.process;
+    that.render = presenter.render;
 
     that.showCommands = function (commandGroup, context) {
         // TODO all commands hidden by default; only show commands specified by `commandGroup`.

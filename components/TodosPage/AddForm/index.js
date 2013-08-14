@@ -12,10 +12,13 @@ module.exports = function TodosPageAddForm(todos) {
         viewModel: new ViewModel(todos)
     });
 
-    presenter.element.then(function (element) {
+    that.render = function () {
+        var element = presenter.render();
+
+        // TODO autofocus attribute could take care of this?
         var input = element.querySelector("input");
         input.focus();
-    });
 
-    that.render = presenter.process;
+        return element;
+    };
 };

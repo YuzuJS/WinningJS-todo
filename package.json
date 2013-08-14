@@ -12,21 +12,22 @@
         "url": "http://github.com/NobleJS/WinningJS-todo/issues"
     },
     "scripts": {
-        "before-build": "grunt.cmd",
+        "before-build": "grunt",
         "lint": "jshint lib components"
     },
     "dependencies": {
-        "grunt": ">= 0.3.17",
-        "jquery-browserify": ">= 1.8.1",
-        "knockoutify": ">= 2.2.0",
-        "pubit": ">= 1.2.1",
-        "q": ">= 0.8.10",
-        "simple-jadeify": ">= 1.0.0",
+        "grunt": "~0.4.1",
+        "grunt-cli": "~0.1.9",
+        "jquery2": "~2.0.3-a",
+        "knockout": "~2.3.0",
+        "pubit": "~1.2.1",
+        "q": "~0.9.6",
+        "simple-jadeify": "~1.1.0",
         "WinningJS": "git://github.com/NobleJS/WinningJS.git",
-        "winningjs-build": ">= 0.2.0"
+        "winningjs-build": "~0.3.1"
     },
     "devDependencies": {
-        "jshint": ">= 0.9.1"
+        "jshint": "~2.1.9"
     },
     "_dependencyComments": {
         "WinningJS": "Not published on npm yet, since it is not near release-quality."

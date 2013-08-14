@@ -1,6 +1,8 @@
 ﻿"use strict";
 
 var Presenter = require("WinningJS/lib/ui/Presenter");
+var mixinShowable = require("WinningJS/lib/ui/components").mixinShowable;
+
 var template = require("./template.jade");
 
 module.exports = function TodosPage(appBar, navBar, addForm, todoList) {
@@ -13,6 +15,7 @@ module.exports = function TodosPage(appBar, navBar, addForm, todoList) {
             appBar: appBar
         }
     });
+    mixinShowable(this, presenter);
 
-    this.render = presenter.process;
+    this.render = presenter.render;
 };

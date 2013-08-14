@@ -6,5 +6,5 @@ var template = require("./template.jade");
 module.exports = function TodosPageNavBar() {
     var presenter = new Presenter({ template: template });
 
-    this.render = presenter.process;
+    this.render = presenter.render;
 };

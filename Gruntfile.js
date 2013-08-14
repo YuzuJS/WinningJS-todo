@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
     grunt.loadNpmTasks("winningjs-build");
-    
+
     grunt.initConfig({
         "WinningJS-build": {
             src: "index.jade",
@@ -11,7 +11,7 @@ module.exports = function (grunt) {
                 entry: "lib/start.js",
                 dest: "out/browserified",
                 aliases: {
-                    "jquery": "jquery-browserify"
+                    "jquery": "jquery2"
                 },
                 middleware: [require("simple-jadeify")]
             },
